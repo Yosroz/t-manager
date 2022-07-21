@@ -1,0 +1,55 @@
+<h2>New Event</h2>
+<form >
+    <div   action="events" method="POST>
+        <label for="title">Title</label>
+        <input type="text" name="title" required/>
+    </div>
+    <div>
+        <label for="date">Date</label>
+        <input type="date" name="date" min='2022-07-22' required/>
+    </div>
+    <div>
+        <label for="host">Host</label>
+        <input type="text" name="host" value=<%= user.email %> required/>
+    </div>
+    <div>
+        <label for="location">Location</label>
+        <input type="text" name="location" required/>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea name="description" cols="30" rows="5"></textarea>
+    </div>
+    <button type="reset">Reset</button>
+    <button type="submit">Create new event</button>
+</form>
+
+<script>
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', async (e) =>{
+
+        //get the values
+        const title = form.title.value
+        const date = form.date.value
+        const host = form.host.value
+        const location = form.location.value
+        const description = form.description.value
+        //const name = form.name.value
+
+        try {
+            const res = await fetch('/events', {
+                method: 'POST',
+                body: JSON.stringify({ tittle, date, host, location, description}),
+                headers: { 'Content-Type': 'application/json'}
+            })
+            const data = await res.json()
+            console.log(data)
+            if (data.user) {
+                location.assign('/')
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+</script>

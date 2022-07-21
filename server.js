@@ -10,6 +10,7 @@ const { requireAuth, checkUser } = require('./middleware/authMiddleware')
 
 const indexRouter = require('./routes/index')
 const authRouter = require('./routes/authRoutes')
+const eventRouter = require('./routes/events')
 const logedinRouter = require('./routes/logedin')
 
 const mongoose = require('mongoose')
@@ -29,7 +30,9 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use('/', indexRouter)
+app.use('/events', eventRouter)
 app.use(authRouter)
 app.use(logedinRouter)
+
 
 app.listen(process.env.PORT || 3000)
