@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 
 
 const eventSchema = new mongoose.Schema({
-  title: {
+  eventName: {
     type: String,
     required: true
   },
@@ -25,14 +25,19 @@ const eventSchema = new mongoose.Schema({
     default: Date.now
   },
   host: {
-    type: mongoose.Schema.Types.ObjectId,
-    //required: true,
+    type: String,
+    required: true,
     ref: 'user',
     //add default to current user
+  },
+  eventType: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'EventType'
   }
 })
 
 
-const User = mongoose.model('event', eventSchema)
 
-module.exports = Event
+
+module.exports = mongoose.model('Event', eventSchema)

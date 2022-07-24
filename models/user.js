@@ -16,10 +16,10 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please enter an password'],
         minlength: [6, 'Minimum password length is 6 characters']
     },
-    //name: {
-     // type: String,
-    //  required: true
-   // },
+    name: {
+      type: String,
+      required: [true,'please enter your name'],
+    },
 })
 
 // fire a function before doc saved to db
@@ -42,6 +42,6 @@ userSchema.statics.login = async function(email, password) {
     throw Error('incorrect email')
   }
 
-const User = mongoose.model('user', userSchema)
+const User = mongoose.model('user',userSchema)
 
 module.exports = User

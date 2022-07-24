@@ -5,7 +5,7 @@ const {requireAuth} = require('../middleware/authMiddleware')
 //handle errors
 const handleError = (err) => {
   console.log(err.message, err.code)
-  let errors = { email: '', password: ''}
+  let errors = { email: '', password: '',name: ''}
 
 // incorrect email
   if (err.message === 'incorrect email') {
@@ -15,8 +15,6 @@ const handleError = (err) => {
   if (err.message === 'incorrect password') {
     errors.password = 'that password is incorrect'
   }
-
-
 
   // duplicate error code
 
@@ -52,10 +50,10 @@ module.exports.signup_get = (req, res) => {
   }
   
   module.exports.signup_post = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
   
     try {
-      const user = await User.create({ email, password });
+      const user = await User.create({ email, password, name });
       const token = createToken(user._id)
       res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
       res.status(201).json({ user: user._id })

@@ -3,20 +3,22 @@
         <a href="/">T-Manager</a>
         <ul>
             <% if (user) { %> 
+            <div>
                 <li><a href="/logout">Logout</a></li>
-                <li>Welcome, <%= user.email %>  </li>
+                <li>Welcome, <%= user.name %>  </li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/events/new">Add Event</a></li>
+                <li><a href="/eventTypes">event Types</a></li>
+                <li><a href="/eventTypes/new">new event Type</a></li>
+            </div>
             <% } else { %>
-                <li><a href="/">Home Page</a></li>
+            <div>
                 <li><a href="/login">Log-In</a></li>
                 <li><a href="/signup">Sing-Up</a></li>
-                <li><a href="/about">About</a></li>
-            <% } %>
-            
-            <div>   
-             יופיע רק אחרי ההתחברות, מופיע פה בינתיים רק בשביל שיהיה לנו
-             <li><a href="/events">Events</a></li>
-             <li><a href="/events/new">Add Event</a></li>
             </div>
+            <% } %>
+            <li><a href="/about">About</a></li>
+            <li><a href="/">Home Page</a></li>
         </ul>
     </nav>
 </header>

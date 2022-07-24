@@ -1,0 +1,11 @@
+<h2>Search Event Type</h2>
+<form action="/eventTypes" method="GET">
+    <label>Type</label>
+    <input type="text" name="name" value="<%= (!!searchOptions.name)?searchOptions.name:'' %> ">
+    <button type="submit">Search</button>
+</form>
+<br>
+<% eventTypes.forEach(eventType => { %>
+    <div><%= eventType.name %> </div>
+    <a href="/eventTypes/<%= eventType.id %>">View</a>
+<% }) %>
