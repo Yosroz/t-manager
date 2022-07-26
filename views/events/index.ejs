@@ -7,16 +7,21 @@
     <div>
         <label>Events After</label>
         <input type="date" name="eventAfter" value="<%= searchOptions.eventAfter %> ">
-    </div>
-    <div>
+        &nbsp&nbsp
         <label>Events Before</label>
         <input type="date" name="eventBefore" value="<%= searchOptions.eventBefore %> ">
     </div>
     <button type="submit">Search</button>
 </form>
 <div>
+    <h2>Result</h2>
     <% events.forEach(event => { %>
-        <div><%= event.eventName %> </div>
-        <a href="/events/<%= event.id %>">View</a> 
-    <% }) %> 
+        <div class="information-grid4">
+            <div><%= event.eventDate %> </div>
+            <div><%= event.eventName %> </div>
+            <div><%= event.eventTypes %></div>
+            <div><%= event.eventLocation %></div>
+            <a href="/events/<%= event.id %>">View</a>
+        </div>
+    <% }) %>
 </div>

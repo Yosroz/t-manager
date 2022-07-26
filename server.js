@@ -15,6 +15,7 @@ const authRouter = require('./routes/authRoutes')
 const eventRouter = require('./routes/events')
 const eventTypeRouter = require('./routes/eventTypes')
 const logedinRouter = require('./routes/logedin')
+const aboutRouter = require('./routes/about')
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
@@ -30,15 +31,17 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
+app.use(express.static('about'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({limit: '10mb',extended: false}))
 
 app.use('/', indexRouter)
 app.use('/events', eventRouter)
-app.use('/eventTypes', eventTypeRouter)
+app.use('/eventTypes', eventTypeRouter)+
 app.use(authRouter)
 app.use(logedinRouter)
+app.use('/about',aboutRouter)
 
 
 app.listen(process.env.PORT || 3000)

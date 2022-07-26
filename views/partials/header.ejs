@@ -1,52 +1,53 @@
 <header>
-    <a href="/"><img src="/photos/logo2.png" alt="logo" href="/" style="width: 400px;height: 150px;"></a>
-    <% if (user) { %> 
-        <div>
-            Welcome, <%= user.name %>
-        </div>
-        <% } %>
     <div class="header">
-        <div class="dropdown">
-            <% if (user) { %> 
-                <div class="dropdown header2" data-dropdown>
-                    <button class="link" data-dropdown-button>Menu</button>
-                    <div class="dropdown-menu information-grid">
-                        <div>
-                            <div class="dropdown-heading"><a href="/events" class="link-head">Events</a></div>
-                            <div class="dropdown-links">
-                                <a href="/events/new" class="link">Add Event</a>
-                                <a href="/eventTypes" class="link">View event types</a>
-                                <a href="/eventTypes/new" class="link">New event Type</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/logout" class="link">Logout</a>
-                </div>
-            <%} else { %> 
-                <div class="header2">
-                    <a href="/login" class="link">Log-In</a>
-                    <a href="/signup" class="link">Sing-Up</a>
-                </div>
-            <%} %>
-        </div>
-        <a href="/about" class="link">About</a>
-    </div>
-    <nav>
-        <ul>
-            
             <% if (user) { %> 
                 <div>
-                <ul>
-                    <p><a href="/events" class="link">Events</a></p>
-                    <p></p><a href="/events/new" class="link">Add Event</a></p>
-                    <p></p><a href="/eventTypes" class="link">event Types</a></p>
-                    <p></p><a href="/eventTypes/new" class="link">new event Type</a></p>
-                </ul>
+                    Welcome, <%= user.name %>
+                </div>
+                <% } %>
+            <div class="dropdown">
+                <% if (user) { %> 
+                    <div class="dropdown header2" data-dropdown>
+                        <button class="link" data-dropdown-button>Menu</button>
+                        <div class="dropdown-menu information-grid">
+                            <div>
+                                <div class="dropdown-heading"><a href="/events" class="link-head">Events</a></div>
+                                <div class="dropdown-links">
+                                    <a href="/events/new" class="link">Add Event</a>
+                                    <a href="/eventTypes" class="link">View event types</a>
+                                    <a href="/eventTypes/new" class="link">New event Type</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/logout" class="link">Logout</a>
+                    </div>
+                    <%} else { %> 
+                        <div class="header2">
+                            <a href="/login" class="link">Log-In</a>
+                            <a href="/signup" class="link">Sing-Up</a>
+                        </div>
+                        <%} %>
             </div>
-            <% } else { %>
-            <div>
-            </div>
-            <% } %>
-        </ul>
-    </nav>
-</header>
+                    <a href="/about" class="link">About</a> 
+    </div>
+                <nav>
+                    <a href="/"><img src="/photos/logo2.png" alt="logo" class="logo"></a>
+                    <ul>
+                        
+                        <% if (user) { %> 
+                            <div>
+                                <ul>
+                                    <p><a href="/events" class="link">Events</a></p>
+                                    <p></p><a href="/events/new" class="link">Add Event</a></p>
+                                    <p></p><a href="/eventTypes" class="link">event Types</a></p>
+                                    <p></p><a href="/eventTypes/new" class="link">new event Type</a></p>
+                                </ul>
+                            </div>
+                            <% } else { %>
+                                <div>
+                                </div>
+                                <% } %>
+                            </ul>
+                        </nav>
+                        
+                    </header>
