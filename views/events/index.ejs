@@ -1,18 +1,24 @@
 <h2>Seach Events</h2>
-<form action="/events" method="GET">
-    <div>
-        <label>Event Name</label>
-        <input type="text" name="eventName" value="<%= searchOptions.eventName %>">
-    </div>
-    <div>
-        <label>Events After</label>
-        <input type="date" name="eventAfter" value="<%= searchOptions.eventAfter %> ">
-        &nbsp&nbsp
-        <label>Events Before</label>
-        <input type="date" name="eventBefore" value="<%= searchOptions.eventBefore %> ">
-    </div>
-    <button type="submit">Search</button>
-</form>
+<div  class="form-body">
+    <form action="/events" method="GET">
+        <div class="form-item">
+            <input type="text" name="eventName" value="<%= searchOptions.eventName %>" placeholder="Event Name" class="form-input">
+        </div>
+        <div>
+            <label>Events After</label >  
+        </div>
+        <div class="form-item">
+            <input type="date" name="eventAfter" value="<%= searchOptions.eventAfter %> " placeholder="After" class="form-input">
+        </div>
+        <div>
+            <label>Events Before</label>
+        </div>
+        <div class="form-item">
+            <input type="date" name="eventBefore" value="<%= searchOptions.eventBefore %> " class="form-input">
+        </div>
+        <button type="submit" class="form-button">Search</button>
+    </form>
+</div>
 <div>
     <h2>Result</h2>
     <% events.forEach(event => { %>

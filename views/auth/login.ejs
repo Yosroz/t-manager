@@ -1,14 +1,13 @@
-
-    <h2>Login</h2>
-<form>
-    <label for="email">Email</label>
-    <input type="text" name="email"  />
+<h2>Login</h2>
+<div class="form-body">
+  <form >
+    <input type="text" name="email" placeholder="Email" class="form-input"/>
     <div class="email error"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password"  />
+    <input type="password" name="password" placeholder="Password" class="form-input" />
     <div class="password error"></div>
-    <button>login</button>
-</form>
+    <button class="form-button">login</button>
+  </form>
+</div>
 
 <script>
   const form = document.querySelector('form');

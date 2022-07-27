@@ -1,17 +1,16 @@
 
     <h2>Sing up</h2>
-<form>
-    <label for="email">Email</label>
-    <input type="text" name="email" placeholder="user@email.com" required />
-    <div class="email error"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password" required />
-    <div class="password error"></div>
-    <label for="name">Name</label>
-    <input type="text" name="name" placeholder="Name" required />
-    <div class="name error"></div>
-    <button>Sign up</button>
-</form>
+<div class="form-body">
+    <form>
+        <input type="text" name="email" placeholder="Email" placeholder="Email" required class="form-input"/>
+        <div class="email error"></div>
+        <input type="text" name="name" placeholder="Name" required class="form-input"/>
+        <div class="name error"></div>
+        <input type="password" name="password" placeholder="Password" required class="form-input"/>
+        <div class="password error"></div>
+        <button class="form-button">Sign up</button>
+    </form>
+</div>
 
 <script>
     const form = document.querySelector('form')

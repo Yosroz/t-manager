@@ -4,7 +4,10 @@
 :root {
     font-family: 'Bauhaus 93';
     font-size: 20px;
-    color: var(--color-text-light);    
+    color: var(--color-text-light);
+    --clr: #1b0000;
+    --clr-f:  #3d0101;
+    --clr-m: #4e1007;
 }
 
 body {
@@ -16,7 +19,7 @@ body {
 }
 
 .header {
-    background-color: #474772;
+    background-color: var(--clr);
     display: flex;
     align-items: baseline;
     padding: .5rem;
@@ -34,7 +37,7 @@ body {
     left: 0%;
     bottom: 0;
     width: 100%;
-    background-color: #484880;
+    background-color: var(--clr-f);
     display: flex;
     align-items: baseline;
     padding: .5rem;
@@ -89,7 +92,7 @@ body {
     position: absolute;
     left: 0;
     top: calc(100%+ .25rem);
-    background-color: rgb(41, 79, 136);
+    background-color: var(--clr-m);
     padding: .75rem;
     border-radius: .25rem;
     box-shadow: 0 2px 15px 0 rgba(0,0,0,.1);
@@ -110,21 +113,18 @@ body {
 }
 
 .information-grid2 {
-    margin-left: 45%;
     display: grid;
     grid-template-columns: repeat(2, max-content);
     gap: 2rem;
 }
 
 .information-grid3 {
-    margin-left: 20%;
     display: grid;
     grid-template-columns: repeat(3, max-content);
     gap: 0.5rem;
 }
 
 .information-grid4 {
-    margin-left: 20%;
     display: grid;
     grid-template-columns: repeat(5, max-content);
     gap: 2rem;
@@ -173,8 +173,15 @@ h2 {
 }
 
 form {
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    width: 80%;
+    max-width: 250px;
+    font-family: 'Bauhaus 93';
 }
 
 textarea {
@@ -186,4 +193,49 @@ textarea {
     color: black;
     font-family: "Times New Roman";
     background-color: rgba(247, 247, 247, 0.5)
+}
+.form-button,
+.form-input {
+    font-family: inherit;
+    text-align: center;
+    border: 0;
+}
+
+.form-input {
+    padding: .5em;
+}
+
+.form-input:focus::placeholder {
+    color: var(--clr);
+}
+
+.form-button {
+    font-family: 'Bauhaus 93';
+    background-color: var(--clr-f);
+    color: white;
+    padding: 0.5em;
+}
+
+.form-button2 {
+    width: 250px;
+}
+
+.form-body {
+    min-height: 100hv;
+    display: grid;
+    place-items: center;
+}
+
+.form-body2 {
+    max-width: 1000px;
+    margin: 0 23%;
+}
+
+.form-button:hover {
+    background-color: var(--clr-m);
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
 }

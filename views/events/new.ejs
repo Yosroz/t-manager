@@ -1,13 +1,13 @@
 <h2>New Event</h2>
-<form action="/events" method="POST">
+<form action="/events" method="POST" class="form-body form-body2">
     <div class="information-grid3">
-        <div>
+        <div class="form-item">
             <label>Event Name</label>
-            <input type="text" name="eventName" value="<%= Event.eventName %> ">
+            <input type="text" name="eventName" value="<%= Event.eventName %>" class="form-imput" placeholder="Event Name" >
         </div>
-        <div>
+        <div  class="form-item">
             <label>Event Type</label>
-            <select name="eventType">
+            <select name="eventType" class="form-input">
                 <% eventTypes.forEach(eventType => { %>
                     <% if (eventType.id === event.eventType) { %>
                     <option selected label="<%= eventType.name %> " value="<%= eventType.id %> "></option>
@@ -17,27 +17,26 @@
                     <% }) %> 
             </select>   
         </div>
-        <div>
+        <div  class="form-item">
             <label>Event Date</label>
-            <input type="date" name="eventDate" 
+            <input type="date" name="eventDate" class="form-input"
                 value="<%= Event.eventDate == null ? '' : Event.eventDate.toISOSTRING().split('T')[0] %>">
         </div>
-    
-        <div>
+        <div  class="form-item">
             <label>Host</label>
-            <input type="text" name="host" value="<%= user.name %>">
+            <input type="text" name="host" value="<%= user.name %>" class="form-input">
         </div> 
-        <div>
+        <div  class="form-item">
             <label>Event Location</label>
-            <input type="text" name="eventLocation" value="<%= Event.eventLocation %>">
+            <input type="text" name="eventLocation" value="<%= Event.eventLocation %>" class="form-input">
         </div>
         <div>
         </div>
-    </div>
+    </div  class="form-item">
     <label>Description</label>
     <div></div>
-    <textarea name="description"<%= Event.description %> ></textarea>
+    <textarea name="description"<%= Event.description %>class="form-input" ></textarea>
     <div></div>
+    <button type="submit" class="form-button2 form-button">Create</button>
     <a href="/events">Cancel</a>
-    <button type="submit">Create</button>
 </form>

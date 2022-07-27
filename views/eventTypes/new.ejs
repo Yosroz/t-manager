@@ -1,9 +1,8 @@
 <h2>New Event Type</h2>
-<form action="/eventTypes" method="POST">
-    <div>
-        <label">Type Name</label>
-        <input type="text" name="name" value="<%= eventType.name %> ">
-    </div>
+<div  class="form-body">
+    <form action="/eventTypes" method="POST">
+            <input type="text" name="name"  value="<%= eventType.name %> " placeholder="Name">
+            <button type="submit">Create</button>
+    </form>
     <a href="/eventTypes">Cancel</a>
-    <button type="submit">Create</button>
-</form>
+</div>
