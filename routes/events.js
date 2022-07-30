@@ -2,7 +2,9 @@ const { Router } = require('express');
 const {requireAuth, checkUser} = require('../middleware/authMiddleware')
 const Event = require('../models/event')
 const User = require('../models/User')
-const EventType = require('../models/eventType')
+const EventType = require('../models/eventType');
+const { render } = require('ejs');
+const moment = require('moment')
 
 const router = Router();
 
@@ -20,9 +22,11 @@ router.get('/',requireAuth, async (req, res) => {
     }
     try {
         const events = await query.exec()
+        console.log(events)
         res.render('events/index', {
             events: events,
-            searchOptions: req.query
+            searchOptions: req.query,
+            moment: moment,
         })
     } catch(err) {
         console.log('err'+err)
@@ -52,6 +56,23 @@ router.post('/',checkUser, async (req, res) => {
         res.redirect('events')
     } catch(err) {
         console.log('err'+err)
+    }
+})
+
+// show event
+router.get('/:id',requireAuth, async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.id)
+        const eventType = await EventType.findById(event.eventType).exec()
+        console.log(eventType)
+        res.render('events/show', {
+            event: event,
+            eventType: eventType,
+            moment: moment
+        })
+    } catch(err) {
+        console.log('err'+err)
+        res.redirect('/')
     }
 })
 

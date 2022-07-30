@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: [true,'please enter your name'],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
 })
 
 // fire a function before doc saved to db

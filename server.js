@@ -36,9 +36,13 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({limit: '10mb',extended: false}))
 
+app.use(express.static('public'))
+app.use('/img', express.static(__dirname + '/public/photos'))
+app.use('/css', express.static(__dirname + '/public/stylesheets'))
+
 app.use('/', indexRouter)
 app.use('/events', eventRouter)
-app.use('/eventTypes', eventTypeRouter)+
+app.use('/eventTypes', eventTypeRouter)
 app.use(authRouter)
 app.use(logedinRouter)
 app.use('/about',aboutRouter)

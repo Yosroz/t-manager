@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Event = require('../models/event')
 const User = require('../models/User')
-const {requireAuth,checkUser} = require('../middleware/authMiddleware')
+const {requireAuth,checkUser, checkAdmin} = require('../middleware/authMiddleware')
 const EventType = require('../models/eventType')
 
 //all eventTypes Route
@@ -23,12 +23,12 @@ router.get('/',requireAuth, async (req, res) => {
 
 
 //new eventType Route
-router.get('/new',requireAuth, (req,res) => {
+router.get('/new',checkAdmin, (req,res) => {
     res.render('eventTypes/new', { eventType: new EventType() })
 })
 
 //Create eventType Route
-router.post('/',checkUser, async(req, res) =>{
+router.post('/',checkAdmin, async(req, res) =>{
     const eventType = new EventType({
         name: req.body.name
     })
@@ -49,11 +49,10 @@ try{
 router.get('/:id',requireAuth, async (req, res) =>{
     try {
         const eventTypes = await EventType.findById(req.params.id)
-        //remove after adding events
-        //const events = await Event.find({ eventTypes: eventTypes.id }).limit(10).exec()
+        const events = await Event.find({ eventType: eventTypes.id }).limit(10).exec()
         res.render('eventTypes/show', {
             eventTypes: eventTypes,
-            //eventByType: events
+            eventByType: events
         })
     } catch(err) {
         console.log('err'+err)
@@ -62,7 +61,7 @@ router.get('/:id',requireAuth, async (req, res) =>{
 })
 
 //get edit event type
-router.get('/:id/edit',requireAuth, async (req, res) =>{
+router.get('/:id/edit',checkAdmin, async (req, res) =>{
     try {
         const eventTypes = await EventType.findById(req.params.id)
         res.render('eventTypes/edit', {eventTypes: eventTypes})
@@ -74,7 +73,7 @@ router.get('/:id/edit',requireAuth, async (req, res) =>{
 
 
 //update event type
-router.put('/:id',checkUser, async (req, res) =>{
+router.put('/:id',checkAdmin, async (req, res) =>{
     let eventTypes
     try{
         eventTypes = await EventType.findById(req.params.id)
@@ -96,7 +95,7 @@ router.put('/:id',checkUser, async (req, res) =>{
 })
 
 //delete event type
-router.delete('/:id',checkUser, async (req, res) =>{
+router.delete('/:id',checkAdmin, async (req, res) =>{
     let eventTypes
     try{
         eventTypes = await EventType.findById(req.params.id)

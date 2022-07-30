@@ -45,4 +45,32 @@ const checkUser = (req, res, next) => {
     }
 }
 
-module.exports = { requireAuth, checkUser }
+const checkAdmin = (req, res, next) => {
+    const token = req.cookies.jwt
+
+    if(token) {
+        jwt.verify(token, 'tmanager secret', async (err, decodedToken) =>{
+            if(err) {
+                console.log(err.message)
+                res.locals.user = null
+                next()
+            } else {
+                //console.log(decodedToken)
+                let user = await User.findById(decodedToken.id)
+                if(user.isAdmin) {
+                    res.locals.user = user
+                    next()
+                } else {
+                    console.log('not admin')
+                    res.redirect('/')
+                }
+            }
+        })
+    }  
+    else {
+        res.locals.user = null
+        next()
+    }
+}
+
+module.exports = { requireAuth, checkUser, checkAdmin }

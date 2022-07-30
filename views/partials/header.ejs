@@ -22,7 +22,9 @@
                         <a href="/events" class="link">Events</a>
                         <a href="/events/new" class="link">Add Event</a>
                         <a href="/eventTypes" class="link">event Types</a>
-                        <a href="/eventTypes/new" class="link">new event Type</a>
+                        <% if (user.isAdmin) { %>
+                            <a href="/eventTypes/new" class="link">New event Type</a>
+                        <% } %>
                         <a href="/about" class="link">About</a> 
                         <div><a href="/logout" class="link">Logout</a></div>
                     </div>

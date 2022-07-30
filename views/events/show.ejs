@@ -1,0 +1,7 @@
+<h2><%= event.eventName %></h2>
+<div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
+<div>Event Location: <%= event.eventLocation %></div>
+<div>Event Type: <%= eventType.name%></div>
+<div>Event Host: <%= event.host %></div>
+<div>Event Description: <%= event.description %></div>
+<a href="/events/">Return</a>

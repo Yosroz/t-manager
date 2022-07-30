@@ -23,10 +23,9 @@
     <h2>Result</h2>
     <% events.forEach(event => { %>
         <div class="information-grid4">
-            <div><%= event.eventDate %> </div>
-            <div><%= event.eventName %> </div>
-            <div><%= event.eventTypes %></div>
-            <div><%= event.eventLocation %></div>
+            <div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
+            <div>Event Name: <%= event.eventName %> </div>
+            <div>Event Location: <%= event.eventLocation %></div>
             <a href="/events/<%= event.id %>">View</a>
         </div>
     <% }) %>
