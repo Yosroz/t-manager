@@ -4,6 +4,7 @@ const Event = require('../models/event')
 const User = require('../models/User')
 const {requireAuth,checkUser, checkAdmin} = require('../middleware/authMiddleware')
 const EventType = require('../models/eventType')
+const moment = require('moment')
 
 //all eventTypes Route
 router.get('/',requireAuth, async (req, res) => {
@@ -48,11 +49,12 @@ try{
 //get events by event type
 router.get('/:id',requireAuth, async (req, res) =>{
     try {
-        const eventTypes = await EventType.findById(req.params.id)
-        const events = await Event.find({ eventType: eventTypes.id }).limit(10).exec()
+        const eventType = await EventType.findById(req.params.id)
+        const events = await Event.find({ eventType: eventType.id }).exec()
         res.render('eventTypes/show', {
-            eventTypes: eventTypes,
-            eventByType: events
+            eventType: eventType,
+            eventByType: events,
+            moment: moment
         })
     } catch(err) {
         console.log('err'+err)
