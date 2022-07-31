@@ -81,7 +81,6 @@ router.put('/:id',checkAdmin, async (req, res) =>{
         eventTypes = await EventType.findById(req.params.id)
         eventTypes.name = req.body.name
         await eventTypes.save()
-        console.log(eventTypes)
         res.redirect(`/eventTypes/${eventTypes.id}`)
     } catch(err) {
         console.log('err'+err)
