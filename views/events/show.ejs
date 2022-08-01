@@ -1,7 +1,26 @@
-<h2><%= event.eventName %></h2>
-<div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
-<div>Event Location: <%= event.eventLocation %></div>
-<div>Event Type: <%= eventType.name%></div>
-<div>Event Host: <%= event.host %></div>
-<div>Event Description: <%= event.description %></div>
-<a href="/events/">Return</a>
+<body>
+    <h2><%= event.eventName %></h2>
+    <table class="t-view">
+        <tr>
+            <th class="th-view1">Type</th>
+            <th class="th-view"><%= eventType.name%></th>
+        </tr>
+        <tr>
+            <th class="th-view1">Time</th>
+            <th class="th-view"><%= moment(event.eventDate).format('DD-MM-YY') %></th>
+        </tr>
+        <tr>
+            <th class="th-view1">Location</th>
+            <th class="th-view"><%= event.eventLocation %></th>
+        </tr>
+        <tr>
+            <th class="th-view1">Host</th>
+            <th class="th-view"><%= event.host %></th>
+        </tr>
+        <tr>
+            <th class="th-view1">Description</th>
+            <th class="th-view2"> <%= event.description %></th>
+        </tr>
+    </table>
+    <a href="/events/" class="link">Return</a>
+</body>

@@ -1,19 +1,29 @@
-<h2><%= eventType.name %></h2>
+<div>
+    <h2><a href="/eventTypes/<%= eventType.id%>/edit" class="link1"><%= eventType.name %></a></h2>
+</div>
 <div>Number of events of the type: <%= eventByType.length %></div>
-<a href="/eventTypes/">Return</a>
-&nbsp&nbsp&nbsp
+<br> <br>
 <% if(user.isAdmin) { %>
-<a href="/eventTypes/<%= eventType.id%>/edit">Edit</a>
-<% } %>
-<% if (eventByType.length > 0) { %>
-    <h2>Events By Type:</h2>
-    <% eventByType.forEach(event => { %>
-        <div>
-            <h3><%= event.eventName %></h3>
-            <div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
-            <div>Event Location: <%= event.eventLocation %></div>
-            <div>Event Host: <%= event.host %></div>
-            <a href="/events/<%= event.id %>">View Event</a>
-        </div>
-    <% }) %>
-<% } %>
+    <% } %>
+    <% if (eventByType.length > 0) { %>
+        <h2>Events By Type:</h2>
+        <br><br>
+        <table class="t-view">
+            <% eventByType.forEach(event => { %>
+                <th class="th-view">
+                    <div>
+                        <a href="/events/<%= event.id %>" class="link1"><h3><%= event.eventName %></h3></a>
+                    </div>
+                    <div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
+                    <div>Event Location: <%= event.eventLocation %></div>
+                    <div>Event Host: <%= event.host %></div>
+                    <div>
+                        <a href="/events/<%= event.id %>" class="link">View</a>
+                    </div>
+                </th>
+                <tr></tr>
+                <% }) %>
+                <% } %>
+            </table>
+            
+            <a href="/eventTypes/" class="link">Return</a>

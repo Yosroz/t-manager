@@ -1,9 +1,8 @@
 <h2>New Event</h2>
-<form action="/events" method="POST" class="form-body form-body2">
+<form action="/events" method="POST" class="form-body>
     <div class="information-grid3">
         <div class="form-item">
-            <label>Event Name</label>
-            <input type="text" name="eventName" value="<%= Event.eventName %>" class="form-imput" placeholder="Event Name" >
+            <input type="text" name="eventname" value="<%= Event.eventName %>" class="form-input" placeholder="Event Name">
         </div>
         <div  class="form-item">
             <label>Event Type</label>
@@ -30,13 +29,9 @@
             <label>Event Location</label>
             <input type="text" name="eventLocation" value="<%= Event.eventLocation %>" class="form-input">
         </div>
-        <div>
-        </div>
     </div  class="form-item">
     <label>Description</label>
-    <div></div>
-    <textarea name="description"<%= Event.description %>class="form-input" ></textarea>
-    <div></div>
-    <button type="submit" class="form-button2 form-button">Create</button>
-    <a href="/events">Cancel</a>
+    <textarea name="description"<%= Event.description %> ></textarea>
+    <button type="submit" class="form-button">Create</button>
 </form>
+<a href="/events" class="link">Cancel</a>

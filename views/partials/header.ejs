@@ -1,44 +1,41 @@
-<header>
-    <div class="header">
-            <% if (user) { %> 
-                <div>
-                    Welcome, <%= user.name %>
-                </div>
-                <% } %>
-            <div class="dropdown">
+<body>
+    <header>
+        <div class="header">
                 <% if (user) { %> 
-                    <div class="dropdown header2" data-dropdown>
-                        <button class="link" data-dropdown-button>Menu</button>
-                        <div class="dropdown-menu information-grid">
-                            <div>
-                                <div class="dropdown-heading"><a href="/events" class="link-head">Events</a></div>
-                                <div class="dropdown-links">
-                                    <a href="/events/new" class="link">Add Event</a>
-                                    <a href="/eventTypes" class="link">View event types</a>
-                                    <a href="/eventTypes/new" class="link">New event Type</a>
+                    <div>
+                        Welcome, <%= user.name %>
+                    </div>
+                    <% } %>
+                <div>
+                    <% if (user) { %> 
+                        <div class="header2">
+                            <div class="dropdown">
+                                <button class="link dropdown-button">Menu</button>
+                                <div class="dropdown-menu">
+                                    <div class="link"><a href="/events" class="link">Events</a></div>
+                                    <div><a href="/events/new" class="link">Add Event</a></div>
+                                    <div><a href="/eventTypes" class="link">event Types</a></div>
+                                    <% if (user.isAdmin) { %>
+                                        <a href="/eventTypes/new" class="link">New event Type</a>
+                                    <% } %>
                                 </div>
                             </div>
+                            <a href="/about" class="link">About</a> 
+                            <div><a href="/logout" class="link">Logout</a></div>
                         </div>
-                        <a href="/events" class="link">Events</a>
-                        <a href="/events/new" class="link">Add Event</a>
-                        <a href="/eventTypes" class="link">event Types</a>
-                        <% if (user.isAdmin) { %>
-                            <a href="/eventTypes/new" class="link">New event Type</a>
-                        <% } %>
-                        <a href="/about" class="link">About</a> 
-                        <div><a href="/logout" class="link">Logout</a></div>
-                    </div>
-             
+                        
                     </div>
                     <%} else { %> 
                         <div class="header2">
                             <a href="/login" class="link">Log-In</a>
                             <a href="/signup" class="link">Sing-Up</a>
+                            <a href="/about" class="link">About</a> 
                         </div>
                         <%} %>
-
-                    
+                        
+                        
+        </div>
     </div>
-</div>
-<a href="/"><img src="/photos/logo2.png" alt="logo" class="logo"></a>
-</header>
+    <a href="/"><img src="/photos/logo2.png" alt="logo" class="logo"></a>
+    </header>
+</body>

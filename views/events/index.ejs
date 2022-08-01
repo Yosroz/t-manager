@@ -21,12 +21,18 @@
 </div>
 <div>
     <h2>Result</h2>
+    <table  class="t-view"> 
+        <tr>
+            <th class="th-view-h">Date</th>
+            <th class="th-view-h">Event Name</th>
+            <th class="th-view-h">Location</th>
+        </tr>
     <% events.forEach(event => { %>
-        <div class="information-grid4">
-            <div>Event Time: <%= moment(event.eventDate).format('DD-MM-YY') %> </div>
-            <div>Event Name: <%= event.eventName %> </div>
-            <div>Event Location: <%= event.eventLocation %></div>
-            <a href="/events/<%= event.id %>">View</a>
-        </div>
+            <tr class="tr-table">
+                <th class="th-view"><%= moment(event.eventDate).format('DD-MM-YY') %></th>
+                <th class="th-view"><a href="/events/<%= event.id %>" class="link1"><%= event.eventName %></a></th>
+                <th class="th-view"><%= event.eventLocation %></th>
+            </tr>
     <% }) %>
+</table>
 </div>

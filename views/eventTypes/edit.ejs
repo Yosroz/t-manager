@@ -1,9 +1,11 @@
 <h2>Edit Event Type</h2>
+
 <div class="form-body">
     <form method="POST" action="/eventTypes/<%= eventTypes.id %>?_method=PUT">
         <label>Type Name</label>
-        <input type="text" name="name" value="<%= eventTypes.name %> ">
-        <button type="submit">Update</button>
+        <input type="text" name="name" value="<%= eventTypes.name %> " class="form-input">
+        <button type="reset" class="form-button2">Reset</button>
+        <button type="submit" class="form-button">Update</button>
     </form>
-    <a href="/eventTypes/<%= eventTypes.id %> ">Cancel</a>
+    <a href="/eventTypes/<%= eventTypes.id %>" class="link" >Cancel</a>
 </div>

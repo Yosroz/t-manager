@@ -1,15 +1,11 @@
 <h2>Search Event Type</h2>
 <div  class="form-body">
     <form action="/eventTypes" method="GET">
-        <input type="text" name="name" value="<%=(!!searchOptions.name)?searchOptions.name:''%>" placeholder="Type">
-        <button type="submit">Search</button>
+        <input type="text" name="name" value="<%=(!!searchOptions.name)?searchOptions.name:''%>" placeholder="Type" class="form-input">
+        <button type="submit" class="form-button">Search</button>
     </form>
 </div>
 <br>
 <% eventTypes.forEach(eventType => { %>
-        <div class="information-grid2">
-            <a href="/eventTypes/<%= eventType.id %>">View</a>
-            <div><%= eventType.name %> </div>
-        </div>
-    </div>
+            <div><a href="/eventTypes/<%= eventType.id %>" class="link"><%= eventType.name %></a></div>
 <% }) %>
