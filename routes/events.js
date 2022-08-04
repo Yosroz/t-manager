@@ -22,7 +22,6 @@ router.get('/',requireAuth, async (req, res) => {
     }
     try {
         const events = await query.exec()
-        console.log(events)
         res.render('events/index', {
             events: events,
             searchOptions: req.query,
