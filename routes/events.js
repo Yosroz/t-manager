@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const Event = require('../models/event')
-const User = require('../models/User')
+const User = require('../models/user')
 const EventType = require('../models/eventType');
 const {requireAuth,checkUser, checkAdmin} = require('../middleware/authMiddleware')
 const { render } = require('ejs');

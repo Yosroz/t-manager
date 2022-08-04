@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Event = require('../models/event')
-const User = require('../models/User')
+const User = require('../models/user')
 const {requireAuth,checkUser, checkAdmin} = require('../middleware/authMiddleware')
 const EventType = require('../models/eventType')
 const moment = require('moment')
