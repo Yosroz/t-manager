@@ -1,0 +1,9 @@
+<h2>Edit Event </h2>
+
+<div class="form-body">
+    <form method="POST" action="/events/<%= event.id %>?_method=PUT">
+        <input type="text" name="eventname" value="<%= Event.eventName %>" class="form-input">
+        <button type="submit" class="form-button">Update</button>
+    </form>
+    <a href="/events/<%= event.id %>" class="link" >Cancel</a>
+</div>

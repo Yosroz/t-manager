@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const {requireAuth, checkUser} = require('../middleware/authMiddleware')
 const Event = require('../models/event')
 const User = require('../models/User')
 const EventType = require('../models/eventType');
+const {requireAuth,checkUser, checkAdmin} = require('../middleware/authMiddleware')
 const { render } = require('ejs');
 const moment = require('moment')
 
@@ -91,5 +91,54 @@ async function renderNewpage(res, event, hasError = false) {
     }
 }
 
+//get edit event
+router.get('/:id/edit',checkAdmin, async (req, res) =>{
+    try {
+        const event = await Event.findById(req.params.id)
+        res.render('events/edit', {event: event})
+    } catch(err) {
+        console.log('err'+err)
+        res.redirect('/events')
+    }
+})
+
+
+//update event 
+router.put('/:id',checkAdmin, async (req, res) =>{
+    let event
+    try{
+        event = await Event.findById(req.params.id)
+        event.Eventname = req.body.name
+        await event.save()
+        res.redirect(`/events/${event.id}`)
+    } catch(err) {
+        console.log('err'+err)
+        if (event == null) {
+            res.redirect('/')
+        } else {
+            res.render('events/edit',{
+                event: event,
+                errorMessage: 'Error updating event'
+            })
+        }
+    }
+})
+
+//delete event 
+router.get('/:id/delete',checkAdmin, async (req, res) =>{
+    let event
+    try{
+        event = await Event.findById(req.params.id)
+        await event.remove()
+        res.redirect('/events')
+    } catch(err) {
+        console.log('err'+err)
+        if (event == null) {
+            res.redirect('/')
+        } else {
+            res.redirect(`events/${event.id}`)
+        }
+    }
+})
 
 module.exports = router;

@@ -22,5 +22,10 @@
             <th class="th-view2"> <%= event.description %></th>
         </tr>
     </table>
+    <div>
+    <form action="/events/<%= event.id%>/delete" onsubmit="return confirm('Are you sure?');">
+        <button type="submit" class="form-button">Delete</button>
+    </form>
+    </div>
     <a href="/events/" class="link">Return</a>
 </body>
