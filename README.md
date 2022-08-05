@@ -10,6 +10,13 @@ as packages we used JWT for auth and access&view permissions management for norm
 mongoose for data schemas and management.
 and Heroku for deploying the web application.
 
+heroku app url:
+https://t-manager-y-a.herokuapp.com
+
+contributors:
+Asaf Nunu
+Yosi Rozenberg
+
 some screenshots of the application:
 events view:
 ![Screen Shot 2022-08-05 at 9 08 11](https://user-images.githubusercontent.com/104827327/183012632-f0534e99-2159-4790-a81e-b464b61c6b0e.png)
